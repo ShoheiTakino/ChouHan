@@ -12,9 +12,28 @@ struct ContentView: View {
     @State var rightDiceNumber = 6
     @State var timer: Timer?
     @State var isRolling = false
+    @State var isChou = false
     
     var body: some View {
         VStack {
+            HStack {
+                Button(action: {
+                    isChou = true
+                 }) {
+                     Text("丁")
+                         .font(.largeTitle)
+                         .foregroundColor(Color.black)
+                 }
+                 .padding(50)
+                Button(action: {
+                    isChou = false
+                 }) {
+                     Text("半")
+                         .font(.largeTitle)
+                         .foregroundColor(Color.black)
+                 }
+                 .padding(50)
+            }
             Spacer()
             HStack {
                 Image(systemName: "die.face.\(leftDiceNumber)")
@@ -56,10 +75,16 @@ private extension ContentView {
             timer?.invalidate()
             timer = nil
             isRolling = false
+            
         }
     }
     func stopRandamNumber() -> Int {
         return Int.random(in: 1..<7)
+    }
+    
+    func isOddNumber() -> Bool {
+        var sum = leftDiceNumber + rightDiceNumber
+        return sum / 2
     }
 }
 
