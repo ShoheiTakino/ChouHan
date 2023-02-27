@@ -23,6 +23,7 @@ struct ContentView: View {
                     isChou = true
                     isSelectedChouHan = true
                     chouHanTitle = "準備完了"
+                    
                  }) {
                      Text("丁")
                          .font(.largeTitle)
